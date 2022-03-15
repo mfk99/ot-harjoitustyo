@@ -4,5 +4,5 @@ Normal
 **Bold**
 *Italic*
 ~~Strikethrough~~
-**-Bold and nested italic-**
+**_Bold and nested italic_**
 ***Bold and italic***
