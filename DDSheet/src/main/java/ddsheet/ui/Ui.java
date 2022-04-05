@@ -90,7 +90,10 @@ public class Ui extends Application{
         if (existingUsername(username)) {
             return "Username already taken";
         }
-        if (!passwordEligible(password)) {
+        if (!usernameLongEnough(username)) {
+            return "Username must be at least 3 characters long";
+        }
+        if (!passwordLongEnough(password)) {
             return "Password must be at least 3 characters long";
         }
         USERS.put(username, password);
@@ -116,7 +119,11 @@ public class Ui extends Application{
         return (truePassword.equals(password));
     }
     
-    private boolean passwordEligible(String password){
+    private boolean usernameLongEnough(String username){
+        return (3<=username.length());
+    }
+    
+    private boolean passwordLongEnough(String password){
         return (3<=password.length());
     }
 }

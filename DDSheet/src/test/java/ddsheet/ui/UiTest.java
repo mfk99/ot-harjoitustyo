@@ -39,6 +39,12 @@ public class UiTest {
     }
     
     @Test
+    public void userCreationNotAllowedWithIneligibleUsername() {
+        String returnValue= ui.attemptCreateUser("te", "test");
+        assertEquals("Username must be at least 3 characters long", returnValue);
+    }
+    
+    @Test
     public void userCreationNotAllowedWithExistingUsername() {
         ui.attemptCreateUser("test", "test");
         String returnValue= ui.attemptCreateUser("test", "test");
