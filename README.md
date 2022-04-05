@@ -7,7 +7,7 @@
 [Changelog](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
 
 ## Käyttöohje
-Ohjelma käynnistyy komennolla
+Ohjelma käynnistyy DDSheet-kansiossa komennolla
 
 ```
 mvn compile exec:java -Dexec.mainClass=ddsheet.Main
