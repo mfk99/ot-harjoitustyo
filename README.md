@@ -20,3 +20,15 @@ tai jar-tiedostolla komennolla
 ```
 java -jar DDSheet-1.0-SNAPSHOT.jar 
 ```
+
+Ohjelman jacoco-raportin saa käskyllä
+
+```
+mvn test jacoco:report 
+```
+
+ja checkstyle-raportin käskyllä
+
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
