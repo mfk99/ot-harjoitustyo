@@ -3,8 +3,8 @@ package ddsheet.ui;
 
 import ddsheet.domain.User;
 import ddsheet.domain.Character;
+import ddsheet.domain.DDSheetService;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,10 +18,7 @@ import javafx.stage.Stage;
 
 public class Ui extends Application{
     
-    //hashmapin käyttö on väliaikaista, myöhemmin vaihdetaan sqliteen
-    final private HashMap <String, User> USERS=new HashMap();
-    String currentUser="";
-    boolean loggedIn=false;
+    private DDSheetService ddsheetService;
     
     public static void main(String[] args) {
         launch(args);
@@ -29,13 +26,13 @@ public class Ui extends Application{
     
     @Override
     public void init() {
-        //TODO
+        ddsheetService=new DDSheetService();
     }
     
     @Override
     public void start(Stage window) {
         
-        //login scene
+        //login view
         
         HBox loginButtons=new HBox();
         Button logInButton=new Button("Log in");
@@ -54,9 +51,9 @@ public class Ui extends Application{
         
         
         FlowPane composition=new FlowPane(loginInformation);
-        Scene loginView=new Scene(composition);
+        Scene loginView=new Scene(composition, 400, 200);
         
-        //create user scene
+        //create user view
         
         VBox createUserInformation=new VBox();
         HBox createUserButtons=new HBox();
@@ -71,9 +68,13 @@ public class Ui extends Application{
         createUserInformation.getChildren().addAll(new Label("Username:"), createUserusernameField, 
                 new Label("Password"), createUserPasswordField, createUserPrompt, createUserButtons);
         
-        Scene createUserView=new Scene(createUserInformation);
+        Scene createUserView=new Scene(createUserInformation, 400, 200);
         
-        //user characters scene
+        createUserButton.setOnAction(e-> {
+            createUserPrompt.setText(ddsheetService.attemptCreateUser(createUserusernameField.getText(), createUserPasswordField.getText()));
+        });
+        
+        //user characters view
         
         VBox userCharacters=new VBox();
         
@@ -81,13 +82,8 @@ public class Ui extends Application{
         GridPane grid=new GridPane();
         Button createCharacterViewButton=new Button ("Create new character");
         userCharacters.getChildren().addAll(logOutButton, grid, createCharacterViewButton);
-        if (loggedIn) {
-            User user=USERS.get(currentUser);
-            grid=buildCharacterGrid(user);
-            userCharacters.getChildren().set(1, grid);
-        }
         
-        Scene userCharactersView=new Scene(userCharacters);
+        Scene userCharactersView=new Scene(userCharacters, 400, 200);
         
         //character creation view
         
@@ -98,29 +94,28 @@ public class Ui extends Application{
         Button usercharactersViewBtton=new Button("Back");
         characterCreation.getChildren().addAll(createCharacterPrompt, 
                 characterName, createCharacterButton, usercharactersViewBtton);
-        Scene characterCreationView=new Scene(characterCreation);
+        Scene characterCreationView=new Scene(characterCreation, 400, 200);
         
-        //button functionalities
+        //transitional button functionalities
         
         createUserViewButton.setOnAction(e-> {
             window.setScene(createUserView);
         });
         logInButton.setOnAction(e-> {
-            prompt.setText(attemptLogIn(loginUsernameField.getText(), loginPasswordField.getText()));
+            prompt.setText(ddsheetService.attemptLogIn(loginUsernameField.getText(), loginPasswordField.getText()));
             if (prompt.getText().equals("Login successful!")) {
+                userCharacters.getChildren().set(1, buildCharacterGrid(ddsheetService.getUser()));
                 window.setScene(userCharactersView);
             }
         });
         
-        createUserButton.setOnAction(e-> {
-            createUserPrompt.setText(attemptCreateUser(createUserusernameField.getText(), createUserPasswordField.getText()));
-        });
+        
         loginViewButton.setOnAction(e-> {
             window.setScene(loginView);
         });
         
         logOutButton.setOnAction(e-> {
-            loggedIn=false;
+            ddsheetService.logOut();
             window.setScene(loginView);
         });
         createCharacterViewButton.setOnAction(e-> {
@@ -128,58 +123,15 @@ public class Ui extends Application{
         });
         
         usercharactersViewBtton.setOnAction(e-> {
-            userCharacters.getChildren().set(1, buildCharacterGrid(USERS.get(currentUser)));
+            userCharacters.getChildren().set(1, buildCharacterGrid(ddsheetService.getUser()));
             window.setScene(userCharactersView);
         });
         createCharacterButton.setOnAction(e-> {
-            createCharacterPrompt.setText(attemptAddCharacter(characterName.getText()));
+            createCharacterPrompt.setText(ddsheetService.addCharacter(characterName.getText()));
         });
         
         window.setScene(loginView);
         window.show();
-    }
-    
-    public String attemptCreateUser(String username, String password) {
-        if (existingUsername(username)) {
-            return "Username already taken";
-        }
-        if (!usernameLongEnough(username)) {
-            return "Username must be at least 3 characters long";
-        }
-        if (!passwordLongEnough(password)) {
-            return "Password must be at least 3 characters long";
-        }
-        USERS.put(username, new User(username, password));
-        return "Account successfully created!";
-    }
-    
-    public String attemptLogIn(String username, String password) {
-        if (!existingUsername(username)) {
-            return "There is no account with that username";
-        }
-        if (!correctPassword(username, password)) {
-            return "Incorrect password";
-        }
-        loggedIn=true;
-        currentUser=username;
-        return ("Login successful!");
-    }
-    
-    private boolean existingUsername(String username) {
-        return USERS.containsKey(username);
-    }
-    
-    private boolean correctPassword(String username, String password) {
-        User user=USERS.get(username);
-        return (password.equals(user.getPassword()));
-    }
-    
-    private boolean usernameLongEnough(String username){
-        return (3<=username.length());
-    }
-    
-    private boolean passwordLongEnough(String password){
-        return (3<=password.length());
     }
     
     private GridPane buildCharacterGrid(User user) {
@@ -209,17 +161,4 @@ public class Ui extends Application{
         
         return charactersGrid;
     }
-    
-    private String attemptAddCharacter(String name) {
-        if (characterNameLongEnough(name)) {
-            USERS.get(currentUser).getCharacters().add(new Character(name));
-            return "Character creation successful!";
-        }
-        return "Name must be at least one character long";
-    }
-    
-    private boolean characterNameLongEnough(String name) {
-        return 0<name.length();
-    }
-    
 }

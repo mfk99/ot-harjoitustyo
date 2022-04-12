@@ -16,20 +16,6 @@ public class User {
         this.characters=new ArrayList<>();
     }
     
-    public void addNewCharacter(String name) {
-        characters.add(new Character(name));
-    }
-    
-    public void deleteCharacter(String name) {
-        for (int i=0; i<characters.size(); i++) {
-            String characterName=characters.get(i).getName();
-            if (name.equals(characterName)) {
-                characters.remove(i);
-                return;
-            }
-        }
-    }
-    
     public String getUsername () {
         return this.username;
     }
