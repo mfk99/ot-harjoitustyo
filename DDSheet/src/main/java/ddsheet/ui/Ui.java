@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Ui extends Application{
+public class Ui extends Application {
     
     private DDSheetService ddsheetService;
     
@@ -26,7 +26,7 @@ public class Ui extends Application{
     
     @Override
     public void init() {
-        ddsheetService=new DDSheetService();
+        ddsheetService = new DDSheetService();
     }
     
     @Override
@@ -34,41 +34,41 @@ public class Ui extends Application{
         
         //login view
         
-        HBox loginButtons=new HBox();
-        Button logInButton=new Button("Log in");
-        Button createUserViewButton=new Button("Create new user");
+        HBox loginButtons = new HBox();
+        Button logInButton = new Button("Log in");
+        Button createUserViewButton = new Button("Create new user");
         loginButtons.getChildren().addAll(logInButton, createUserViewButton);
         loginButtons.setSpacing(10);
         
-        VBox loginInformation=new VBox();
-        TextField loginUsernameField=new TextField();
-        TextField loginPasswordField=new TextField();
-        Label prompt=new Label();
+        VBox loginInformation = new VBox();
+        TextField loginUsernameField = new TextField();
+        TextField loginPasswordField = new TextField();
+        Label prompt = new Label();
         loginInformation.getChildren().addAll(
                 new Label("Username:"), loginUsernameField, new Label("Password"), 
                 loginPasswordField, prompt, loginButtons);
         loginInformation.setSpacing(10);
         
         
-        FlowPane composition=new FlowPane(loginInformation);
-        Scene loginView=new Scene(composition, 400, 200);
+        FlowPane composition = new FlowPane(loginInformation);
+        Scene loginView = new Scene(composition, 400, 200);
         
         //create user view
         
-        VBox createUserInformation=new VBox();
-        HBox createUserButtons=new HBox();
-        TextField createUserusernameField=new TextField();
-        TextField createUserPasswordField=new TextField();
-        Label createUserPrompt=new Label();
-        Button createUserButton=new Button("Create user");
-        Button loginViewButton=new Button("Back");
+        VBox createUserInformation = new VBox();
+        HBox createUserButtons = new HBox();
+        TextField createUserusernameField = new TextField();
+        TextField createUserPasswordField = new TextField();
+        Label createUserPrompt = new Label();
+        Button createUserButton = new Button("Create user");
+        Button loginViewButton = new Button("Back");
         
         createUserButtons.getChildren().addAll(createUserButton, loginViewButton);
         
         createUserInformation.getChildren().addAll(new Label("Username:"), createUserusernameField, 
                 new Label("Password"), createUserPasswordField, createUserPrompt, createUserButtons);
         
-        Scene createUserView=new Scene(createUserInformation, 400, 200);
+        Scene createUserView = new Scene(createUserInformation, 400, 200);
         
         createUserButton.setOnAction(e-> {
             createUserPrompt.setText(ddsheetService.attemptCreateUser(createUserusernameField.getText(), createUserPasswordField.getText()));
@@ -76,25 +76,25 @@ public class Ui extends Application{
         
         //user characters view
         
-        VBox userCharacters=new VBox();
+        VBox userCharacters = new VBox();
         
-        Button logOutButton=new Button ("Log out");
-        GridPane grid=new GridPane();
-        Button createCharacterViewButton=new Button ("Create new character");
+        Button logOutButton = new Button("Log out");
+        GridPane grid = new GridPane();
+        Button createCharacterViewButton = new Button("Create new character");
         userCharacters.getChildren().addAll(logOutButton, grid, createCharacterViewButton);
         
-        Scene userCharactersView=new Scene(userCharacters, 400, 200);
+        Scene userCharactersView = new Scene(userCharacters, 400, 200);
         
         //character creation view
         
-        VBox characterCreation=new VBox();
-        Label createCharacterPrompt=new Label();
-        TextField characterName=new TextField();
-        Button createCharacterButton=new Button("Create character");
-        Button usercharactersViewBtton=new Button("Back");
+        VBox characterCreation = new VBox();
+        Label createCharacterPrompt = new Label();
+        TextField characterName = new TextField();
+        Button createCharacterButton = new Button("Create character");
+        Button usercharactersViewBtton = new Button("Back");
         characterCreation.getChildren().addAll(createCharacterPrompt, 
                 characterName, createCharacterButton, usercharactersViewBtton);
-        Scene characterCreationView=new Scene(characterCreation, 400, 200);
+        Scene characterCreationView = new Scene(characterCreation, 400, 200);
         
         //transitional button functionalities
         
@@ -136,18 +136,18 @@ public class Ui extends Application{
     
     private GridPane buildCharacterGrid(User user) {
         
-        GridPane charactersGrid=new GridPane();
-        ArrayList<Character> characters=user.getCharacters();
-        for (int i=0; i<characters.size(); i++) {
-            Character character=characters.get(i);
+        GridPane charactersGrid = new GridPane();
+        ArrayList<Character> characters = user.getCharacters();
+        for (int i = 0; i < characters.size(); i++) {
+            Character character = characters.get(i);
             charactersGrid.add(new Label(character.getName()), 0, i);
 //            charactersGrid.add(new Label(character.getCharacterClass()), i, 1);
 //            charactersGrid.add(new Label(character.getAlignment()), i, 2);
-//            Button viewCharacter=new Button("View");
+//            Button viewCharacter = new Button("View");
 //            charactersGrid.add(viewCharacter, i, 3);
-//            Button modifyCharacter=new Button("Modify");
+//            Button modifyCharacter = new Button("Modify");
 //            charactersGrid.add(modifyCharacter, i, 4);
-//            Button deleteCharacter=new Button("Delete");
+//            Button deleteCharacter = new Button("Delete");
 //            charactersGrid.add(modifyCharacter, i, 5);
         }
 //        

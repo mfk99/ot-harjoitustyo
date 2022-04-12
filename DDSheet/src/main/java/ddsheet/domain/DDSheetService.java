@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class DDSheetService {
     
     //hashmapin käyttö on väliaikaista, myöhemmin vaihdetaan sqliteen
-    final private HashMap <String, User> USERS=new HashMap();
+    final private HashMap<String, User> users = new HashMap();
     private User loggedUser;
     
     public DDSheetService() {
@@ -23,7 +23,7 @@ public class DDSheetService {
         if (!passwordLongEnough(password)) {
             return "Password must be at least 3 characters long";
         }
-        USERS.put(username, new User(username, password));
+        users.put(username, new User(username, password));
         return "Account successfully created!";
     }
     
@@ -34,29 +34,29 @@ public class DDSheetService {
         if (!correctPassword(username, password)) {
             return "Incorrect password";
         }
-        loggedUser=USERS.get(username);
+        loggedUser = users.get(username);
         return ("Login successful!");
     }
     
     public void logOut() {
-        loggedUser=null;
+        loggedUser = null;
     }
     
     public boolean existingUsername(String username) {
-        return USERS.containsKey(username);
+        return users.containsKey(username);
     }
     
     public boolean correctPassword(String username, String password) {
-        User user=USERS.get(username);
+        User user = users.get(username);
         return (password.equals(user.getPassword()));
     }
     
-    public boolean usernameLongEnough(String username){
-        return (3<=username.length());
+    public boolean usernameLongEnough(String username) {
+        return (3 < username.length());
     }
     
-    public boolean passwordLongEnough(String password){
-        return (3<=password.length());
+    public boolean passwordLongEnough(String password) {
+        return (3 < password.length());
     }
     
     public String addCharacter(String name) {
@@ -68,7 +68,7 @@ public class DDSheetService {
     }
     
     public boolean characterNameLongEnough(String name) {
-        return 0<name.length();
+        return 0 < name.length();
     }
     
     public User getUser() {

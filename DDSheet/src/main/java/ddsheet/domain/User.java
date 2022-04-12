@@ -10,13 +10,13 @@ public class User {
     private ArrayList<Character> characters;
     
     public User(String username, String password) {
-        this.username=username;
-        this.password=password;
+        this.username = username;
+        this.password = password;
         //arraylist vaihdetaan myöhemmin sqliteen
-        this.characters=new ArrayList<>();
+        this.characters = new ArrayList<>();
     }
     
-    public String getUsername () {
+    public String getUsername() {
         return this.username;
     }
     
