@@ -69,7 +69,7 @@ public class Ui extends Application {
         logInButton.setOnAction(e-> {
             prompt.setText(ddsheetService.logIn(loginUsernameField.getText(), loginPasswordField.getText()));
             if (prompt.getText().equals("Login successful!")) {
-                updateUserCharactersGrid(ddsheetService.getUser(), window);
+                updateUserCharactersGrid();
                 window.setScene(userCharactersScene);
             }
         });
@@ -132,7 +132,7 @@ public class Ui extends Application {
                 characterName, createCharacterButton, usercharactersViewButton);
         
         usercharactersViewButton.setOnAction(e-> {
-            updateUserCharactersGrid(ddsheetService.getUser(), window);
+            updateUserCharactersGrid();
             window.setScene(userCharactersScene);
         });
         createCharacterButton.setOnAction(e-> {
@@ -156,6 +156,7 @@ public class Ui extends Application {
         
         inspectionViewBackButton.setOnAction(e-> {
             ddsheetService.clearCharacter();
+            updateUserCharactersGrid();
             window.setScene(userCharactersScene);
         });
         toModifyViewButton.setOnAction(e-> {
@@ -177,6 +178,7 @@ public class Ui extends Application {
         
         modificationViewBackButton.setOnAction(e-> {
             ddsheetService.clearCharacter();
+            updateUserCharactersGrid();
             window.setScene(userCharactersScene);
         });
         toInspectViewButton.setOnAction(e-> {
@@ -196,8 +198,9 @@ public class Ui extends Application {
         window.show();
     }
     
-    private void updateUserCharactersGrid(User user, Stage window) {
+    private void updateUserCharactersGrid() {
         
+        User user = ddsheetService.getUser();
         characterGrid.getChildren().clear();
         characterGrid.add(new Label ("----------"), 0, 0);
         ArrayList<Character> characters = user.getCharacters();
@@ -223,7 +226,7 @@ public class Ui extends Application {
             Button deleteCharacter = new Button("Delete");
             deleteCharacter.setOnAction(e-> {
                 user.getCharacters().remove(character);
-                updateUserCharactersGrid(user, window);
+                updateUserCharactersGrid();
             });
             
             characterGrid.addRow(index+1, characterName, viewCharacter, 
