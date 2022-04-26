@@ -103,4 +103,52 @@ public class DDSheetServiceTest {
         assertEquals(1, returnValue);
     }
     
+    @Test
+    public void attemptIntValueChangeDoesntAcceptNegatives() {
+        Character test=new Character("");
+        ddsheetService.setCharacter(test);
+        boolean returnValue=ddsheetService.attemptIntValueChange(0, "-1");
+        assertEquals(false, returnValue);
+    }
+    
+    @Test
+    public void attemptIntValueChangeAcceptsCorrectValue() {
+        Character test=new Character("");
+        ddsheetService.setCharacter(test);
+        boolean returnValue=ddsheetService.attemptIntValueChange(0, "20");
+        assertEquals(true, returnValue);
+    }
+    
+    @Test
+    public void attemptStringValueChangeDoesntAcceptNullName() {
+        Character test=new Character("");
+        ddsheetService.setCharacter(test);
+        boolean returnValue=ddsheetService.attemptStringValueChange(0, "");
+        assertEquals(false, returnValue);
+    }
+    
+    @Test
+    public void attemptStringValueChangeAcceptsCorrectValue() {
+        Character test=new Character("");
+        ddsheetService.setCharacter(test);
+        boolean returnValue=ddsheetService.attemptStringValueChange(0, "name");
+        assertEquals(true, returnValue);
+    }
+    
+    @Test
+    public void getCharacterReturnsCurrentCharacter() {
+        Character test=new Character("");
+        ddsheetService.setCharacter(test);
+        Character returnValue = ddsheetService.getCharacter();
+        assertEquals(test, returnValue);
+    }
+    
+    @Test
+    public void clearCharacterSetsCurrentCharacterToNull() {
+        Character test=new Character("");
+        ddsheetService.setCharacter(test);
+        ddsheetService.clearCharacter();
+        Character returnValue = ddsheetService.getCharacter();
+        assertEquals(null, returnValue);
+    }
 }

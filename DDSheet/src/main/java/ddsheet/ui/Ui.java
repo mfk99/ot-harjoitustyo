@@ -204,7 +204,7 @@ public class Ui extends Application {
         for (int i = 0; i < characters.size(); i++) {
             Character character = characters.get(i);
             int index=i*2;
-            Label characterName = new Label(character.getName());
+            Label characterName = new Label(character.getStringValues()[0]);
             
             Button viewCharacter = new Button("View");
             viewCharacter.setOnAction(e-> {
@@ -243,10 +243,11 @@ public class Ui extends Application {
                 new Label ("Constitution"), new Label ("Intelligence"), 
                 new Label ("Wisdom"), new Label ("Charisma"));
         
-        statisticsGrid.add(new Label(character.getName()), 1, 0);
-        statisticsGrid.add(new Label(character.getRace()), 1, 1);
-        statisticsGrid.add(new Label(character.getCharacterClass()), 1, 2);
-        statisticsGrid.add(new Label(character.getAlignment()), 1, 3);
+        String[] stringValues=character.getStringValues();
+        statisticsGrid.add(new Label(stringValues[0]), 1, 0);
+        statisticsGrid.add(new Label(stringValues[1]), 1, 1);
+        statisticsGrid.add(new Label(stringValues[2]), 1, 2);
+        statisticsGrid.add(new Label(stringValues[3]), 1, 3);
         
         int [] stats=character.getIntValues();
         for (int i=0; i<stats.length; i++) {
@@ -276,10 +277,11 @@ public class Ui extends Application {
                 constitutionButton, intelligenceButton, 
                 wisdomButton, charismaButton);
         
-        modificationGrid.add(new Label(character.getName()), 1, 0);
-        modificationGrid.add(new Label(character.getRace()), 1, 1);
-        modificationGrid.add(new Label(character.getCharacterClass()), 1, 2);
-        modificationGrid.add(new Label(character.getAlignment()), 1, 3);
+        String[] stringValues=character.getStringValues();
+        modificationGrid.add(new Label(stringValues[0]), 1, 0);
+        modificationGrid.add(new Label(stringValues[1]), 1, 1);
+        modificationGrid.add(new Label(stringValues[2]), 1, 2);
+        modificationGrid.add(new Label(stringValues[3]), 1, 3);
         
         int [] stats=character.getIntValues();
         for (int i=0; i<stats.length; i++) {
@@ -362,7 +364,7 @@ public class Ui extends Application {
         intModificationButton.setOnAction(e-> {
             boolean success=ddsheetService.attemptIntValueChange(index, newValue.getText());
             if (success) prompt.setText("Modification successful!");
-            else prompt.setText("The value must be an integer between 0 and 99");
+            else prompt.setText("The value must be an integer between 0 and 20");
         });
         
         stringModificationButton.setOnAction(e-> {

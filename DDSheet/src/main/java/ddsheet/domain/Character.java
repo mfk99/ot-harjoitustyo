@@ -11,53 +11,59 @@ public class Character {
     
     public Character(String name) {
         stringValues = new String[4];
-        stringValues[0]=name;
+        stringValues[0] = name;
+        for (int i=1; i<4; i++) {
+            stringValues[i]="-";
+        }
         intValues = new int[6];
+        for (int i=0; i<6; i++) {
+            intValues[i]=10;
+        }
     }
     
     //string values
     
     public void setStringValues(int index, String value) {
-        stringValues[index]=value;
+        stringValues[index] = value;
     }
     
     public String[] getStringValues() {
         return stringValues;
     }
     
-    public void setName(String value) {
-        this.stringValues[0] = value;
-        
-    }
-    public String getName() {
-        return this.stringValues[0];
-    }
-    
-    public void setRace(String value) {
-        this.stringValues[1] = value;
-    }
-    public String getRace() {
-        return this.stringValues[1];
-    }
-    
-    public void setCharacterClass(String value) {
-        this.stringValues[2] = value;
-    }
-    public String getCharacterClass() {
-        return this.stringValues[2];
-    }
-    
-    public void setAlignment(String value) {
-        this.stringValues[3] = value;
-    }
-    public String getAlignment() {
-        return this.stringValues[3];
-    }
+//    public void setName(String value) {
+//        this.stringValues[0] = value;
+//        
+//    }
+//    public String getName() {
+//        return this.stringValues[0];
+//    }
+//    
+//    public void setRace(String value) {
+//        this.stringValues[1] = value;
+//    }
+//    public String getRace() {
+//        return this.stringValues[1];
+//    }
+//    
+//    public void setCharacterClass(String value) {
+//        this.stringValues[2] = value;
+//    }
+//    public String getCharacterClass() {
+//        return this.stringValues[2];
+//    }
+//    
+//    public void setAlignment(String value) {
+//        this.stringValues[3] = value;
+//    }
+//    public String getAlignment() {
+//        return this.stringValues[3];
+//    }
     
     //int values
     
     public void setIntValues(int index, int value) {
-        this.intValues[index]=value;
+        this.intValues[index] = value;
     }
     
     public int[] getIntValues() {

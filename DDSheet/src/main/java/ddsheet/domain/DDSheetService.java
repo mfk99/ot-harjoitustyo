@@ -39,7 +39,7 @@ public class DDSheetService {
     }
 
     public boolean attemptStringValueChange(int index, String value) {
-        if (value.length()==0) {
+        if (value.length() == 0) {
             return false;
         }
         currentCharacter.setStringValues(index, value);
@@ -47,13 +47,13 @@ public class DDSheetService {
     }
     
     public boolean attemptIntValueChange(int index, String value) {
-        int intValue=0;
+        int intValue;
         try {
-            intValue=Integer.valueOf(value);
+            intValue = Integer.valueOf(value);
         } catch (Exception e) {
             return false;
         }
-        if (intValue<0 || intValue>99) {
+        if (intValue < 0 || intValue > 20) {
             return false;
         }
         currentCharacter.setIntValues(index, intValue);
