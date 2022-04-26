@@ -3,103 +3,114 @@ package ddsheet.domain;
 
 public class Character {
     
-    private String name;
-    private String characterClass;
-    private String race;
-    private String alignment;
+    //contains name, race, class, alignment
+    private String[] stringValues;
     
-    private int strength;
-    private int dexterity;
-    private int constitution;
-    private int intelligence;
-    private int wisdom;
-    private int charisma;
+    //contains strength, dexterity, constitution, intelligence, wisdom and charisma
+    private int[] intValues;
     
     public Character(String name) {
-        this.name = name;
+        stringValues = new String[4];
+        stringValues[0]=name;
+        intValues = new int[6];
     }
     
     //string values
     
+    public void setStringValues(int index, String value) {
+        stringValues[index]=value;
+    }
+    
+    public String[] getStringValues() {
+        return stringValues;
+    }
+    
     public void setName(String value) {
-        this.name = value;
+        this.stringValues[0] = value;
+        
     }
-    
     public String getName() {
-        return this.name;
+        return this.stringValues[0];
     }
     
-//    public void setCharacterClass(String value) {
-//        this.characterClass = value;
-//    }
-//    
-//    public String getCharacterClass() {
-//        return this.characterClass;
-//    }
-//    
-//    public void setRace(String value) {
-//        this.race = value;
-//    }
-//    
-//    public String getRace() {
-//        return this.race;
-//    }
-//    
-//    public void setAlignment(String value) {
-//        this.alignment = value;
-//    }
-//    
-//    public String getAlignment() {
-//        return this.alignment;
-//    }
-//    
-//    //int values
-//    
+    public void setRace(String value) {
+        this.stringValues[1] = value;
+    }
+    public String getRace() {
+        return this.stringValues[1];
+    }
+    
+    public void setCharacterClass(String value) {
+        this.stringValues[2] = value;
+    }
+    public String getCharacterClass() {
+        return this.stringValues[2];
+    }
+    
+    public void setAlignment(String value) {
+        this.stringValues[3] = value;
+    }
+    public String getAlignment() {
+        return this.stringValues[3];
+    }
+    
+    //int values
+    
+    public void setIntValues(int index, int value) {
+        this.intValues[index]=value;
+    }
+    
+    public int[] getIntValues() {
+        return intValues;
+    }
+    
+    //these aren't necessary but might make the code easier to read
+    
 //    public void setStrength(int value) {
-//        this.strength = value;
+//        this.abilityScores[0]=value;;
 //    }
 //    
 //    public int getStrength() {
-//        return this.strength;
+//        return this.abilityScores[0];
 //    }
 //    
 //    public void setDexteririty(int value) {
-//        this.dexterity = value;
+//        this.abilityScores[1]=value;
 //    }
 //    
 //    public int getDexterity() {
-//        return this.dexterity;
+//        return this.abilityScores[1];
 //    }
 //    
 //    public void setConstitution(int value) {
-//        this.constitution = value;
+//        this.abilityScores[2]=value;
 //    }
 //    
 //    public int getConstitution() {
-//        return this.constitution;
+//        return this.abilityScores[2];
 //    }
 //    
 //    public void setIntelligence(int value) {
-//        this.intelligence = value;
+//        this.abilityScores[3]=value;
 //    }
 //    
 //    public int getIntelligence() {
-//        return this.intelligence;
+//        return this.abilityScores[3];
 //    }
 //    
 //    public void setWisdom(int value) {
-//        this.wisdom = value;
+//        this.abilityScores[4]=value;
 //    }
 //    
 //    public int getWisdom() {
-//        return this.wisdom;
+//        return this.abilityScores[4];
 //    }
 //    
 //    public void setCharisma(int value) {
-//        this.charisma = value;
+//        this.abilityScores[5]=value;
 //    }
 //    
 //    public int getCharisma() {
-//        return this.charisma;
+//        return this.abilityScores[5];
 //    }
 }

@@ -8,9 +8,9 @@ public class DDSheetService {
     //hashmapin käyttö on väliaikaista, myöhemmin vaihdetaan sqliteen
     final private HashMap<String, User> users = new HashMap();
     private User loggedUser;
+    private Character currentCharacter;
 
     public DDSheetService() {
-
     }
 
     public String attemptCreateUser(String username, String password) {
@@ -38,6 +38,28 @@ public class DDSheetService {
         return ("Login successful!");
     }
 
+    public boolean attemptStringValueChange(int index, String value) {
+        if (value.length()==0) {
+            return false;
+        }
+        currentCharacter.setStringValues(index, value);
+        return true;
+    }
+    
+    public boolean attemptIntValueChange(int index, String value) {
+        int intValue=0;
+        try {
+            intValue=Integer.valueOf(value);
+        } catch (Exception e) {
+            return false;
+        }
+        if (intValue<0 || intValue>99) {
+            return false;
+        }
+        currentCharacter.setIntValues(index, intValue);
+        return true;
+    }
+    
     public void logOut() {
         loggedUser = null;
     }
@@ -75,4 +97,15 @@ public class DDSheetService {
         return loggedUser;
     }
 
+    public void setCharacter(Character character) {
+        currentCharacter = character;
+    }
+    
+    public void clearCharacter() {
+        currentCharacter = null;
+    }
+    
+    public Character getCharacter() {
+        return currentCharacter;
+    }
 }
