@@ -13,7 +13,7 @@ public class DDSheetService {
     public DDSheetService() {
     }
 
-    public String attemptCreateUser(String username, String password) {
+    public String createUser(String username, String password) {
         if (existingUsername(username)) {
             return "Username already taken";
         }
@@ -27,7 +27,7 @@ public class DDSheetService {
         return "Account successfully created!";
     }
 
-    public String attemptLogIn(String username, String password) {
+    public String logIn(String username, String password) {
         if (!existingUsername(username)) {
             return "There is no account with that username";
         }
@@ -38,7 +38,7 @@ public class DDSheetService {
         return ("Login successful!");
     }
 
-    public boolean attemptStringValueChange(int index, String value) {
+    public boolean changeStringValue(int index, String value) {
         if (value.length() == 0) {
             return false;
         }
@@ -46,7 +46,7 @@ public class DDSheetService {
         return true;
     }
     
-    public boolean attemptIntValueChange(int index, String value) {
+    public boolean changeIntValue(int index, String value) {
         int intValue;
         try {
             intValue = Integer.valueOf(value);

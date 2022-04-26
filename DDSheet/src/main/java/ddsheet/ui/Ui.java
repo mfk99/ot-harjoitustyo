@@ -67,7 +67,7 @@ public class Ui extends Application {
         FlowPane composition = new FlowPane(loginInformation);
         
         logInButton.setOnAction(e-> {
-            prompt.setText(ddsheetService.attemptLogIn(loginUsernameField.getText(), loginPasswordField.getText()));
+            prompt.setText(ddsheetService.logIn(loginUsernameField.getText(), loginPasswordField.getText()));
             if (prompt.getText().equals("Login successful!")) {
                 updateUserCharactersGrid(ddsheetService.getUser(), window);
                 window.setScene(userCharactersScene);
@@ -94,7 +94,7 @@ public class Ui extends Application {
                 new Label("Password"), createUserPasswordField, createUserPrompt, createUserButtons);
         
         createUserButton.setOnAction(e-> {
-            createUserPrompt.setText(ddsheetService.attemptCreateUser(createUserusernameField.getText(), createUserPasswordField.getText()));
+            createUserPrompt.setText(ddsheetService.createUser(createUserusernameField.getText(), createUserPasswordField.getText()));
         });
         loginViewButton.setOnAction(e-> {
             window.setScene(loginScene);
@@ -362,13 +362,13 @@ public class Ui extends Application {
         });
         
         intModificationButton.setOnAction(e-> {
-            boolean success=ddsheetService.attemptIntValueChange(index, newValue.getText());
+            boolean success=ddsheetService.changeIntValue(index, newValue.getText());
             if (success) prompt.setText("Modification successful!");
             else prompt.setText("The value must be an integer between 0 and 20");
         });
         
         stringModificationButton.setOnAction(e-> {
-            boolean success=ddsheetService.attemptStringValueChange(index, newValue.getText());
+            boolean success=ddsheetService.changeStringValue(index, newValue.getText());
             if (success) prompt.setText("Modification successful!");
             else prompt.setText("The value must be at least one character long");
         });
