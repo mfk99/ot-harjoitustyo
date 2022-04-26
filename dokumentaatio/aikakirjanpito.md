@@ -30,8 +30,8 @@
 
 -Testaus ~0,5h
 
--Checkstyle ~15 min
+-Checkstyle ~0,5h
 
--Dokumentaation päivitys ~0,5h
+-Dokumentaation päivitys ~1h
 
-=
+=26h
