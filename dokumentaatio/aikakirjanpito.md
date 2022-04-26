@@ -23,3 +23,15 @@
 -Pakkauskaavio ~0,5h
 
 =10h
+
+#### Viikko 5
+
+-Koodi ~24h
+
+-Testaus ~0,5h
+
+-Checkstyle ~15 min
+
+-Dokumentaation päivitys ~0,5h
+
+=
