@@ -13,3 +13,10 @@
 -lisätty DDSHeetService, joka hoitaa osan ui:n loogisesta toiminnasta
 
 -lisätty luokat User ja Character, edustavat käyttäjää ja tämän hahmoja
+
+## Viikko 5
+-käyttäjä voi tarkastella yksittäisiä hahmojaan
+
+-käyttäjä voi poistaa hahmojaan
+
+-käyttäjä voi muokata hahmojensa ominaisuuksia, kuten nimeä, luokkaa jne.
