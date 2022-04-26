@@ -1,12 +1,20 @@
 # DDSheet
 
+Sovellus tallentaa käyttäjän Dungeons & Dragons-hahmoja, joita voi muokata, tarkastella ja poistaa.
+Käyttäjiä voi olla useita, joille kirjautumiseen vaaditaan oikea salasana. 
+Sovellus tulee käyttämään SQLiteä käyttäjien ja hahmojen tallentamiseen, mutta tätä ei olla vielä implementoitu.
+
 ## Dokumentaatio
+
+[Määrittelydokumentti](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/maarittelydokumentti.md)
 
 [Työaikakirjanpito](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/aikakirjanpito.md)
 
 [Arkktehtuurikuvaus](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 [Changelog](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
+
+[Release](https://github.com/mfk99/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Käyttöohje
 Ohjelma käynnistyy DDSheet-hakemistossa komennolla
