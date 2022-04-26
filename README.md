@@ -15,8 +15,11 @@ Ohjelma käynnistyy DDSheet-hakemistossa komennolla
 mvn compile exec:java -Dexec.mainClass=ddsheet.Main
 ```
 
-tai jar-tiedostolla komennolla
-
+tai jar-tiedostolla luomalla jar-tiedosto komennolla
+```
+mvn package
+```
+ja käynnistämällä target-hakemistosta komennolla
 ```
 java -jar DDSheet-1.0-SNAPSHOT.jar 
 ```
