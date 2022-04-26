@@ -12,12 +12,12 @@ public class Character {
     public Character(String name) {
         stringValues = new String[4];
         stringValues[0] = name;
-        for (int i=1; i<4; i++) {
-            stringValues[i]="-";
+        for (int i = 1; i < 4; i++) {
+            stringValues[i] = "-";
         }
         intValues = new int[6];
-        for (int i=0; i<6; i++) {
-            intValues[i]=10;
+        for (int i = 0; i < 6; i++) {
+            intValues[i] = 10;
         }
     }
     
