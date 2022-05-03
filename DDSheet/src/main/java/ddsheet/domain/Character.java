@@ -1,14 +1,22 @@
 
 package ddsheet.domain;
-
+/**
+ * A class representation of the user's characters
+ * @author matti
+ */
 public class Character {
     
     //contains name, race, class, alignment
     private String[] stringValues;
-    
-    //contains strength, dexterity, constitution, intelligence, wisdom and charisma
+    /*contains strength, dexterity, constitution, 
+    intelligence, wisdom and charisma */
     private int[] intValues;
     
+    /**
+     * Creates a new character, sets string values apart 
+     * from the name to - and integer values to 10
+     * @param name The given name for the character
+     */
     public Character(String name) {
         stringValues = new String[4];
         stringValues[0] = name;
@@ -21,8 +29,6 @@ public class Character {
         }
     }
     
-    //string values
-    
     public void setStringValues(int index, String value) {
         stringValues[index] = value;
     }
@@ -31,6 +37,17 @@ public class Character {
         return stringValues;
     }
     
+    public void setIntValues(int index, int value) {
+        this.intValues[index] = value;
+    }
+    
+    public int[] getIntValues() {
+        return intValues;
+    }
+    
+//    Additional setters and getters for string values, 
+//    currently not in use
+//    
 //    public void setName(String value) {
 //        this.stringValues[0] = value;
 //        
@@ -60,18 +77,9 @@ public class Character {
 //        return this.stringValues[3];
 //    }
     
-    //int values
-    
-    public void setIntValues(int index, int value) {
-        this.intValues[index] = value;
-    }
-    
-    public int[] getIntValues() {
-        return intValues;
-    }
-    
-    //these aren't necessary but might make the code easier to read
-    
+//    Additional setters and getters for integer values, 
+//    currently not in use
+//    
 //    public void setStrength(int value) {
 //        this.abilityScores[0]=value;;
 //    }

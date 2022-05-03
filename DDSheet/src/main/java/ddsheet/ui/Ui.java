@@ -387,6 +387,5 @@ public class Ui extends Application {
     
     @Override
     public void stop() {
-        
     }
 }

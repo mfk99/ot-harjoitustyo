@@ -4,12 +4,12 @@ package ddsheet.dao;
 import ddsheet.domain.Character;
 import java.util.ArrayList;
 
-public class SqlCharacterDao implements CharacterDao{
+public class SqlCharacterDao implements CharacterDao {
     
     ArrayList<Character> characters;
     
     public SqlCharacterDao() {
-        characters=new ArrayList();
+        characters = new ArrayList();
         //load the characters
     }
     
