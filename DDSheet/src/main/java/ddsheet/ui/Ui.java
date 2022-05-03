@@ -48,7 +48,20 @@ public class Ui extends Application {
         
         window=stage;
         
-        //login view
+        loginScene = buildLogInScene();
+        createUserScene = buildCreateUserScene();
+        userCharactersScene = buildUserCharactersScene();
+        createCharacterScene = buildCharacterCreationScene();
+        inspectCharacterScene=buildCharacterInspectionScene();
+        modifyCharacterScene=buildCharacterModificationScene();
+        modifyAttributeScene=new Scene(new Label(), 400, 300);
+        
+        
+        window.setScene(loginScene);
+        window.show();
+    }
+    
+    private Scene buildLogInScene() {
         
         HBox loginButtons = new HBox();
         Button logInButton = new Button("Log in");
@@ -77,9 +90,10 @@ public class Ui extends Application {
             window.setScene(createUserScene);
         });
         
-        loginScene = new Scene(composition, 400, 200);
-        
-        //create user view
+        return new Scene(composition, 400, 200);
+    }
+    
+    private Scene buildCreateUserScene() {
         
         VBox createUserInformation = new VBox();
         HBox createUserButtons = new HBox();
@@ -100,12 +114,12 @@ public class Ui extends Application {
             window.setScene(loginScene);
         });
         
-        createUserScene = new Scene(createUserInformation, 400, 200);
-        
-        //user characters view
+        return new Scene(createUserInformation, 400, 200);
+    }
+    
+    private Scene buildUserCharactersScene() {
         
         VBox userCharacters = new VBox();
-        
         Button logOutButton = new Button("Log out");
         characterGrid = new GridPane();
         Button createCharacterViewButton = new Button("Create new character");
@@ -119,9 +133,10 @@ public class Ui extends Application {
             window.setScene(createCharacterScene);
         });
         
-        userCharactersScene = new Scene(userCharacters, 400, 200);
-        
-        //character creation view
+        return new Scene(userCharacters, 400, 200);
+    }
+    
+    private Scene buildCharacterCreationScene() {
         
         VBox characterCreation = new VBox();
         Label createCharacterPrompt = new Label();
@@ -139,18 +154,17 @@ public class Ui extends Application {
             createCharacterPrompt.setText(ddsheetService.addCharacter(characterName.getText()));
         });
         
-        createCharacterScene = new Scene(characterCreation, 400, 200);
-        
-        //character inspection view
+        return new Scene(characterCreation, 400, 200);
+    }
+    
+    private Scene buildCharacterInspectionScene(){
         
         VBox inspectionView=new VBox();
-        
         HBox inspectionViewButtons=new HBox();
         Button inspectionViewBackButton=new Button("Back");
         Button toModifyViewButton=new Button("Modify");
         inspectionViewButtons.getChildren().addAll(inspectionViewBackButton, 
                 toModifyViewButton);
-        
         statisticsGrid=new GridPane();
         inspectionView.getChildren().addAll(inspectionViewButtons, statisticsGrid);
         
@@ -164,9 +178,10 @@ public class Ui extends Application {
             window.setScene(modifyCharacterScene);
         });
         
-        inspectCharacterScene=new Scene(inspectionView, 400, 350);
-        
-        //character modifying view
+        return new Scene(inspectionView, 400, 350);
+    }
+    
+    private Scene buildCharacterModificationScene() {
         
         VBox modificationView=new VBox();
         HBox modificationViewButtons=new HBox();
@@ -186,16 +201,7 @@ public class Ui extends Application {
             window.setScene(inspectCharacterScene);
         });
         
-        modifyCharacterScene=new Scene(modificationView, 400, 350);
-        
-        //attribute modifying view
-        
-        modifyAttributeScene=new Scene(new Label(), 400, 300);
-        
-        //TODO
-        
-        window.setScene(loginScene);
-        window.show();
+        return new Scene(modificationView, 400, 350);
     }
     
     private void updateUserCharactersGrid() {
@@ -377,5 +383,10 @@ public class Ui extends Application {
         });
         
         modifyAttributeScene=new Scene(vbox, 400, 300);
+    }
+    
+    @Override
+    public void stop() {
+        
     }
 }

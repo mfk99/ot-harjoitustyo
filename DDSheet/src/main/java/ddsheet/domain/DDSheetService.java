@@ -1,16 +1,28 @@
 
 package ddsheet.domain;
 
+import ddsheet.dao.CharacterDao;
+import ddsheet.dao.SqlCharacterDao;
+import ddsheet.dao.SqlUserDao;
+import ddsheet.dao.UserDao;
 import java.util.HashMap;
+import java.util.List;
 
 public class DDSheetService {
 
-    //hashmapin käyttö on väliaikaista, myöhemmin vaihdetaan sqliteen
     final private HashMap<String, User> users = new HashMap();
     private User loggedUser;
     private Character currentCharacter;
+    private UserDao userDao;
+    private CharacterDao characterDao;
 
     public DDSheetService() {
+        userDao=new SqlUserDao();
+        characterDao=new SqlCharacterDao();
+        List<User> usersList=userDao.getAll();
+        for (User user: usersList) {
+            users.put(user.getUsername(), user);
+        }
     }
 
     public String createUser(String username, String password) {
@@ -23,7 +35,9 @@ public class DDSheetService {
         if (!passwordLongEnough(password)) {
             return "Password must be at least 3 characters long";
         }
-        users.put(username, new User(username, password));
+        User newUser=new User(username, password);
+        users.put(username, newUser);
+        userDao.create(newUser);
         return "Account successfully created!";
     }
 
