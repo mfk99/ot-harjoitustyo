@@ -20,3 +20,6 @@
 -käyttäjä voi poistaa hahmojaan
 
 -käyttäjä voi muokata hahmojensa ominaisuuksia, kuten nimeä, luokkaa jne.
+
+## Viikko 6
+-pysyväistallennusta on yritetty, mutta mitään toiminnallisuutta ei olla lisätty
