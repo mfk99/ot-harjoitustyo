@@ -45,3 +45,16 @@
 -Dokumentaation päivitys ~1h
 
 =13,5h
+
+### Viikko 7
+
+-Koodi 6h
+
+-Testaus 1,5h
+
+-Dokumentointi 1,5h
+
+=9h
+
+### Loppusumma
+68h 20 min.
