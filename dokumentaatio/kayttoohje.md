@@ -1,5 +1,20 @@
 # Käyttöohje
 
+## Käynnistäminen
+
+Sovellus ei vaadi minkäänlaisten uusien kirjastojen lataamista
+
+Ohjelma käynnistyy DDSheet-hakemistossa komennolla
+
+```
+mvn compile exec:java -Dexec.mainClass=ddsheet.Main
+```
+
+tai valmiilla jar-tiedostolla komennolla
+```
+java -jar DDSheet-1.0-SNAPSHOT.jar 
+```
+
 ## Kirjautuminen
 
 Sovellus näyttää ensimmäiseksi kirjautumisnäkymän.
