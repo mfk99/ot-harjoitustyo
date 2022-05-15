@@ -10,7 +10,7 @@ Sovellus toteuttaa pysyväistallennuksen tekstitiedostoihin kirjoittamalla.
 
 [Työaikakirjanpito](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/aikakirjanpito.md)
 
-[Arkktehtuurikuvaus](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+[Arkkitehtuurikuvaus](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 [Changelog](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
 
