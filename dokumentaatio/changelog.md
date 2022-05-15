@@ -23,3 +23,6 @@
 
 ## Viikko 6
 -pysyväistallennusta on yritetty, mutta mitään toiminnallisuutta ei olla lisätty
+
+## Viikko 7
+-pysyväistallennus lisätty
