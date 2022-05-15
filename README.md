@@ -14,9 +14,11 @@ Sovellus tulee käyttämään SQLiteä käyttäjien ja hahmojen tallentamiseen, 
 
 [Changelog](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
 
-[Release](https://github.com/mfk99/ot-harjoitustyo/releases/tag/viikko5)
+[Release](https://github.com/mfk99/ot-harjoitustyo/releases/tag/viikko6)
 
-## Käyttöohje
+[Käyttöohje](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
+## Käynnistysohje
 Ohjelma käynnistyy DDSheet-hakemistossa komennolla
 
 ```
@@ -38,8 +40,14 @@ Ohjelman jacoco-raportin saa käskyllä
 mvn test jacoco:report 
 ```
 
-ja checkstyle-raportin käskyllä
+Checkstyle-raportin käskyllä
 
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
+
+ja JavaDocin käskyllä
+```
+mvn javadoc:javadoc
+```
+

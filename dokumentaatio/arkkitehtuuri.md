@@ -1,10 +1,10 @@
 # Arkkitehtuurikuvaus
 
-### Pakkauskaavio
+## Pakkauskaavio
 
 <img src="https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/pakkauskaavio.png" width="400">
 
-### Sekvenssikaavio
+## Sekvenssikaavio
 
 Sekvenssikaavio kuvastaa uuden käyttäjän luomista
 
@@ -20,3 +20,23 @@ sequenceDiagram
     DDSheetService-->>-UI: "Account successfully created!"
     UI-->>-User: createUserPrompt.setText("Account successfully created!")
 ```
+
+## Käyttöliittymä
+
+Käyttöliittymässä on seitsemän eri näkymää
+
+-Kirjautumisnäkymä
+
+-Uuden käyttäjän luonnin näkymä
+
+-Käyttäjän hahmojen listan näkymän
+
+-Uuden hahmon luonnin näkymän
+
+-Hahmon tarkastelunäkymän
+
+-Hahmon muokkausnäkymä
+
+-Attribuutin muokkausnäkymän
+
+Jokaisen näkymän luontiin on oma metodinsa esim. buildLogInScene, BuildCreateUserScene jne. Käyttäjän hahmojen listaa sekä hahmon tarkastelu- ja muokkausnäkymiä päivitetään niiden tietojen muuttuessa metodeilla updateUserCharactersGrid, updateInspectionViewGrid ja updateModificationViewGrid. Attribuutin muokkausnäkymää muokataan buildModificationView-metodilla, jotta jokaisen attribuutin muokkaamiselle ei tarvitse luoda uutta Scene-oliota.

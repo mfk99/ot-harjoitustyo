@@ -35,3 +35,13 @@
 -Dokumentaation päivitys ~1h
 
 =26h
+
+#### Viikko 6
+
+-Koodi ~12h
+
+-Checkstyle+JavaDoc ~0,5h
+
+-Dokumentaation päivitys ~1h
+
+=13,5h
