@@ -23,6 +23,10 @@ public class FileUserDao implements UserDao {
         }
     }
     
+    /**
+     * Loads existing users from memory file
+     * @throws Exception 
+     */
     private void load() throws Exception {
         Scanner scanner = new Scanner(new File(userFile));
         while (scanner.hasNextLine()) {
@@ -51,6 +55,7 @@ public class FileUserDao implements UserDao {
         return users;
     }
     
+    @Override
     public void save() {
         try (FileWriter writer = new FileWriter(new File(userFile))) {
             for (User user : users) {

@@ -26,6 +26,10 @@ public class FileCharacterDao implements CharacterDao {
         }
     }
     
+    /**
+     * Loads existing characters from memory file
+     * @throws Exception 
+     */
     private void load() throws Exception {
         Scanner scanner = new Scanner(new File(characterFile));
         while (scanner.hasNextLine()) {
@@ -54,6 +58,7 @@ public class FileCharacterDao implements CharacterDao {
         return characters;
     }
     
+    @Override
     public void save() {
         try (FileWriter writer = new FileWriter(new File(characterFile))) {
             for (Character character : characters) {
