@@ -2,8 +2,6 @@
 package ddsheet.domain;
 
 import ddsheet.dao.CharacterDao;
-import ddsheet.dao.SqlCharacterDao;
-import ddsheet.dao.SqlUserDao;
 import ddsheet.dao.UserDao;
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +18,13 @@ public class DDSheetService {
     private UserDao userDao;
     private CharacterDao characterDao;
 
-    public DDSheetService() {
-//        userDao=new SqlUserDao();
-//        characterDao=new SqlCharacterDao();
-//        List<User> usersList=userDao.getAll();
-//        for (User user: usersList) {
-//            users.put(user.getUsername(), user);
-//        }
+    public DDSheetService(UserDao userDao, CharacterDao characterDao) {
+        this.userDao = userDao;
+        this.characterDao = characterDao;
+        List<User> usersList = userDao.getAll();
+        for (User user: usersList) {
+            users.put(user.getUsername(), user);
+        }
     }
 
     /** 
@@ -49,7 +47,7 @@ public class DDSheetService {
         }
         User newUser = new User(username, password);
         users.put(username, newUser);
-//        userDao.create(newUser);
+        userDao.create(newUser);
         return "Account successfully created!";
     }
 
@@ -167,7 +165,9 @@ public class DDSheetService {
      */
     public String addCharacter(String name) {
         if (characterNameLongEnough(name)) {
-            loggedUser.getCharacters().add(new Character(name));
+            Character character = new Character(name, loggedUser);
+            loggedUser.getCharacters().add(character);
+            characterDao.create(character);
             return "Character creation successful!";
         }
         return "Name must be at least one character long";
@@ -201,5 +201,15 @@ public class DDSheetService {
     
     public Character getCharacter() {
         return currentCharacter;
+    }
+    
+    public void deleteCharacter(Character character) {
+        characterDao.getAll().remove(character);
+        loggedUser.getCharacters().remove(character);
+    }
+    
+    public void save() {
+        userDao.save();
+        characterDao.save();
     }
 }

@@ -10,11 +10,15 @@ public class DDSheetServiceTest {
     public DDSheetServiceTest() {
     }
     
+    User testUser;
+    
     DDSheetService ddsheetService;
     
     @Before
-    public void setUp() {
-        ddsheetService=new DDSheetService();
+    public void setUp() throws Exception {
+        FakeUserDao userDao = new FakeUserDao();
+        FakeCharacterDao characterDao= new FakeCharacterDao();
+        ddsheetService=new DDSheetService(userDao, characterDao);
     }
 
     @Test
@@ -105,7 +109,7 @@ public class DDSheetServiceTest {
     
     @Test
     public void attemptIntValueChangeDoesntAcceptNegatives() {
-        Character test=new Character("");
+        Character test=new Character("", testUser);
         ddsheetService.setCharacter(test);
         boolean returnValue=ddsheetService.changeIntValue(0, "-1");
         assertEquals(false, returnValue);
@@ -113,7 +117,7 @@ public class DDSheetServiceTest {
     
     @Test
     public void attemptIntValueChangeAcceptsCorrectValue() {
-        Character test=new Character("");
+        Character test=new Character("", testUser);
         ddsheetService.setCharacter(test);
         boolean returnValue=ddsheetService.changeIntValue(0, "20");
         assertEquals(true, returnValue);
@@ -121,7 +125,7 @@ public class DDSheetServiceTest {
     
     @Test
     public void attemptStringValueChangeDoesntAcceptNullName() {
-        Character test=new Character("");
+        Character test=new Character("", testUser);
         ddsheetService.setCharacter(test);
         boolean returnValue=ddsheetService.changeStringValue(0, "");
         assertEquals(false, returnValue);
@@ -129,7 +133,7 @@ public class DDSheetServiceTest {
     
     @Test
     public void attemptStringValueChangeAcceptsCorrectValue() {
-        Character test=new Character("");
+        Character test=new Character("", testUser);
         ddsheetService.setCharacter(test);
         boolean returnValue=ddsheetService.changeStringValue(0, "name");
         assertEquals(true, returnValue);
@@ -137,7 +141,7 @@ public class DDSheetServiceTest {
     
     @Test
     public void getCharacterReturnsCurrentCharacter() {
-        Character test=new Character("");
+        Character test=new Character("", testUser);
         ddsheetService.setCharacter(test);
         Character returnValue = ddsheetService.getCharacter();
         assertEquals(test, returnValue);
@@ -145,7 +149,7 @@ public class DDSheetServiceTest {
     
     @Test
     public void clearCharacterSetsCurrentCharacterToNull() {
-        Character test=new Character("");
+        Character test=new Character("", testUser);
         ddsheetService.setCharacter(test);
         ddsheetService.clearCharacter();
         Character returnValue = ddsheetService.getCharacter();

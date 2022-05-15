@@ -1,10 +1,14 @@
 
 package ddsheet.ui;
 
+import ddsheet.dao.FileCharacterDao;
+import ddsheet.dao.FileUserDao;
 import ddsheet.domain.User;
 import ddsheet.domain.Character;
 import ddsheet.domain.DDSheetService;
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,8 +43,16 @@ public class Ui extends Application {
     }
     
     @Override
-    public void init() {
-        ddsheetService = new DDSheetService();
+    public void init() throws Exception {
+        
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+        String userFile = properties.getProperty("userFile");
+        String characterFile = properties.getProperty("characterFile");
+        
+        FileUserDao userDao = new FileUserDao(userFile);
+        FileCharacterDao characterDao= new FileCharacterDao(userDao, characterFile);
+        ddsheetService = new DDSheetService(userDao, characterDao);
     }
     
     @Override
@@ -109,6 +121,9 @@ public class Ui extends Application {
         
         createUserButton.setOnAction(e-> {
             createUserPrompt.setText(ddsheetService.createUser(createUserusernameField.getText(), createUserPasswordField.getText()));
+            if (createUserPrompt.getText().equals("Account successfully created!")) {
+                window.setScene(loginScene);
+            }
         });
         loginViewButton.setOnAction(e-> {
             window.setScene(loginScene);
@@ -231,7 +246,7 @@ public class Ui extends Application {
             
             Button deleteCharacter = new Button("Delete");
             deleteCharacter.setOnAction(e-> {
-                user.getCharacters().remove(character);
+                ddsheetService.deleteCharacter(character);
                 updateUserCharactersGrid();
             });
             
@@ -387,5 +402,6 @@ public class Ui extends Application {
     
     @Override
     public void stop() {
+        ddsheetService.save();
     }
 }

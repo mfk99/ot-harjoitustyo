@@ -41,7 +41,6 @@
                 <configuration>
                     <excludes>
                         <exclude>ddsheet/ui/*</exclude>
-                        <exclude>ddsheet/dao/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

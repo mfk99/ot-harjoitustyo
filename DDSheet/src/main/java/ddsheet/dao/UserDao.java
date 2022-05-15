@@ -26,5 +26,8 @@ public interface UserDao {
      * @return A list of all users in the database
      */
     List<User> getAll();
-    
+    /**
+     * A method that saves the users and their passwords to a file
+     */
+    void save();
 }

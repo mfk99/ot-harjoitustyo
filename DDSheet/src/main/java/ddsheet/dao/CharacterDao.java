@@ -20,5 +20,8 @@ public interface CharacterDao {
      * @return A list of all the characters in the database
      */
     List<Character> getAll();
-    
+    /**
+     * A method that saves the characters to a file
+     */
+    void save();
 }
