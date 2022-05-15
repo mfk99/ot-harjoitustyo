@@ -14,7 +14,7 @@ Sovellus toteuttaa pysyväistallennuksen tekstitiedostoihin kirjoittamalla.
 
 [Changelog](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
 
-[Release](https://github.com/mfk99/ot-harjoitustyo/releases/tag/viikko6)
+[Release](https://github.com/mfk99/ot-harjoitustyo/releases/tag/loppupalautus)
 
 [Käyttöohje](https://github.com/mfk99/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
