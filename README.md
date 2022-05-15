@@ -2,7 +2,7 @@
 
 Sovellus tallentaa käyttäjän Dungeons & Dragons-hahmoja, joita voi muokata, tarkastella ja poistaa.
 Käyttäjiä voi olla useita, joille kirjautumiseen vaaditaan oikea salasana. 
-Sovellus tulee käyttämään SQLiteä käyttäjien ja hahmojen tallentamiseen, mutta tätä ei olla vielä implementoitu.
+Sovellus toteuttaa pysyväistallennuksen tekstitiedostoihin kirjoittamalla.
 
 ## Dokumentaatio
 
